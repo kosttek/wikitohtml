@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root >
-  <char value="=" closing="=">
-    <char value="=" closing="==">
-  	  	<char value="=" closing="===">
-			<char value="=" closing="====">
-    			<char value="=" closing="=====">
+<!-- linemark it means that should check begin and end on line marks -->
+  <linemark value="=" min = "1" max = "5">
     
-  				</char>
-  			</char>    
-    	</char>
-  	</char>
-  </char>
+  </linemark>
   
 </root>

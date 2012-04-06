@@ -46,13 +46,27 @@ class Scanner:
     def loadFile(self,path):
         self.file = open(path,'r')
         
+    
+        
     def scan(self):
         treeElement = self.tree.getroot()
-        for character in self.file.read() :
-            print character
-        # stack .pop() .append()
-        # trzeba ogarniac czy znacznik jest juz zamkniety czy jeszcze nie niestety
+        for line in self.file.readlines() :
+            #print line 
+            print self.checkLineStartEndMarks(line)    
 
+    def checkLineStartEndMarks(self,line):
+        if len(line)>2:
+            treeElement = self.tree.getroot()
+            for element in treeElement.iter("linemark"): 
+                if element.attrib['value'] == line[0] and element.attrib['value'] == line[-2]:
+                    mark = element.attrib['value']
+                    for i in range(1,int(element.attrib['max'])):
+                        if mark == line[i] and mark == line[-2-i]:
+                            pass
+                        else:
+                            return {i, mark}
+        return {0,""}
+    
 if __name__ == '__main__':
     scanner = Scanner()
     scanner.loadTree('../data/wikitree.xml')
