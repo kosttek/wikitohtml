@@ -4,7 +4,6 @@
   <linemark value="=" min = "1" max = "5">
     
   </linemark>
-  <chars value = "">
   <char value="'" >
   	<char value="'" return = "''">
   		<char value="'" return = "'''">
@@ -12,5 +11,4 @@
   		</char>
   	</char>
   </char>
-  </chars>
 </root>

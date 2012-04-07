@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ksiazka-telefoniczna kategoria="bohaterowie książek">
+ <!-- komentarz -->
+  <osoba charakter="dobry">
+    <imie>Ambroży</imie>
+    <nazwisko>Kleks</nazwisko>
+    <telefon>123-456-789</telefon>
+  </osoba>
+  <osoba charakter="zły">
+    <imie>Alojzy</imie>
+    <nazwisko>Bąbel</nazwisko>
+    <telefon/>
+  </osoba>
+</ksiazka-telefoniczna>
