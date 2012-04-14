@@ -6,8 +6,8 @@
   </linemark>
   <chars>
   <char value="'" >
-  	<char value="'" return = "''">
-  		<char value="'" return = "'''">
+  	<char value="'" return ="1">
+  		<char value="'" return ="1">
   	
   		</char>
   	</char>
