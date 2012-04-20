@@ -4,6 +4,9 @@
   <linemark value="=" min = "1" max = "5">
     
   </linemark>
+  <firstmark value = "#" min="1" max =""/>
+  <firstmark value = "*" min="1" max =""/>
+  
   <chars>
   <char value="'" >
   	<char value="'" return ="1">
@@ -12,5 +15,21 @@
   		</char>
   	</char>
   </char>
+  
+  <char value="*" return = "1"/>
+  <char value="_" return = "1"/>
+  <char value="~" return = "1"/>
+  <char value="%" return = "1"/>
+  
+  <char value="[" return = "1">
+<!--   	<char value="&quot" return ="1"/> -->
+  	<char value="%" return ="1"/>
+  </char>
+  
+  <char value="]" return = "1">
+<!--   	<char value="&quot" return ="1"/> -->
+  	<char value="%" return ="1"/>
+  </char>
+  
   </chars>
 </root>

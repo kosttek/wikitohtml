@@ -26,12 +26,17 @@ class Scanner:
         treeElement = self.tree.getroot()
         for line in self.file.readlines() : 
             lineMark = self.checkLineStartEndMarks(line)
-            print self.scanLine(line)
+            token_list = self.scanLine(lineMark[0] )
+            token_list.append(lineMark[1])
+            token_list.append("\n")
+            token_list.insert(0,lineMark[1])
+            token_list.insert(0,lineMark[2])
+            print token_list
             
             print "---------------------------"
             
     def scanLine(self, line):
-        class Namespace: pass
+        #class Namespace: pass
         
         def setEndMark(vo):
             #print "return - >",vo.retMark
@@ -58,7 +63,7 @@ class Scanner:
             for element in list(vo.treeElement):
                 
                 if element.attrib["value"] == character:
-                    vo.markAcumulator = vo.markAcumulator + character
+                    vo.markAcumulator +=  character
                     vo.retMark = element.get("return", 0)
                     if len(list(element)) == 0:
                         setEndMark(vo) 
@@ -69,7 +74,7 @@ class Scanner:
                     setEndMark(vo)
                     break
                 else:
-                    vo.tempString = vo.tempString + vo.markAcumulator + character
+                    vo.tempString += vo.markAcumulator + character
                     vo.markAcumulator = ""
                     vo.treeElement = vo.root
                     vo.retMark = 0 
@@ -82,17 +87,39 @@ class Scanner:
             
             
     def checkLineStartEndMarks(self, line):
+        '''Minimal length of firstmark and linemark is not implemented. It seems to be not obligatory now
+        '''
+        return_mark = ""
+        return_first_mark = ""
+        start_i_value = 0
+        
+        if line[-1]=='\n':
+            endcount = -1
+        else:
+            endcount =  0
+        
         if len(line) > 2:
             treeElement = self.tree.getroot()
+            
+            for element in treeElement.iter("firstmark"):
+                if element.attrib['value'] == line[0]:
+                    firstmark = element.attrib['value']
+                    while line[start_i_value] == firstmark:
+                        start_i_value+=1
+                        return_first_mark+=firstmark
+                
             for element in treeElement.iter("linemark"): 
-                if element.attrib['value'] == line[0] and element.attrib['value'] == line[-2]:
+                if element.attrib['value'] == line[start_i_value] and element.attrib['value'] == line[-2]:
                     mark = element.attrib['value']
-                    for i in range(1, int(element.attrib['max'])):
-                        if mark == line[i] and mark == line[-2 - i]:
-                            pass
+                    for i in range(0, int(element.attrib['max'])):
+                        if mark == line[i+start_i_value] and mark == line[-1 - i + endcount]:
+                            return_mark+=mark;
                         else:
-                            return {i, mark}
-        return {0, ""}
+                            return (line[i+start_i_value:endcount-i] , return_mark, return_first_mark)
+        return (line[start_i_value:endcount] , return_mark , return_first_mark)
+    
+    
+    
     
 if __name__ == '__main__':
     scanner = Scanner()
