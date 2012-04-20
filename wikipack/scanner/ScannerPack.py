@@ -46,17 +46,19 @@ class Scanner:
             vo.markAcumulator = ""
             vo.treeElement = vo.root
             vo.retMark = 0
+            vo.added = 1
             
         class varObject:
             #TODO sprobowac z find
             treeElement = self.tree.getroot().iter("chars").next() 
             root = treeElement
             retMark = 0
+            added = 0
+            tempString = ""
+            markAcumulator = ""
             
         ret = list()
         vo = varObject()
-        vo.tempString = ""
-        vo.markAcumulator = ""
         
         for character in line:
             
@@ -74,11 +76,16 @@ class Scanner:
                     setEndMark(vo)
                     break
                 else:
-                    vo.tempString += vo.markAcumulator + character
+                    vo.tempString += vo.markAcumulator
                     vo.markAcumulator = ""
                     vo.treeElement = vo.root
-                    vo.retMark = 0 
-                    
+                    vo.retMark = 0
+            
+            if vo.added == 1:
+                vo.added=0
+            elif vo.treeElement == vo.root:
+                vo.tempString +=  character +vo.markAcumulator
+                     
         ret.append(vo.tempString)
         
         return ret            
