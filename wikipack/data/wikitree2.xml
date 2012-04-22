@@ -19,17 +19,16 @@
   <char value="*" return = "1"/>
   <char value="_" return = "1"/>
   <char value="~" return = "1"/>
-  <char value="%" return = "1"/>
+  <char value="%" return = "1">
+  	<char value="]" return ="1"/>
+  </char>
   
   <char value="[" return = "1">
 <!--   	<char value="&quot" return ="1"/> -->
   	<char value="%" return ="1"/>
   </char>
   
-  <char value="]" return = "1">
-<!--   	<char value="&quot" return ="1"/> -->
-  	<char value="%" return ="1"/>
-  </char>
+
   
   </chars>
 </root>

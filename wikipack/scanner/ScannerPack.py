@@ -24,6 +24,7 @@ class Scanner:
         
     def scan(self):
         treeElement = self.tree.getroot()
+        result_list = list();
         for line in self.file.readlines() : 
             lineMark = self.checkLineStartEndMarks(line)
             token_list = self.scanLine(lineMark[0] )
@@ -31,9 +32,11 @@ class Scanner:
             token_list.append("\n")
             token_list.insert(0,lineMark[1])
             token_list.insert(0,lineMark[2])
-            print token_list
-            
-            print "---------------------------"
+            result_list.extend(token_list)
+            #print token_list
+            #
+            #print "--------------------------"
+        return result_list
             
     def scanLine(self, line):
         #class Namespace: pass
@@ -132,4 +135,4 @@ if __name__ == '__main__':
     scanner = Scanner()
     scanner.loadTree('../data/wikitree2.xml')
     scanner.loadFile('../data/testfile')
-    scanner.scan()
+    print scanner.scan()
