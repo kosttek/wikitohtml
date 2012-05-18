@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parserTree>
+	<token>
+		<id>bold</id>
+		<startTag>'''</startTag>
+		<endTag>'''</endTag>
+		<requiredParentTag></requiredParentTag>
+	</token>
+</parserTree>

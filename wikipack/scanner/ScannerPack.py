@@ -33,9 +33,10 @@ class Scanner:
             token_list.insert(0,lineMark[1])
             token_list.insert(0,lineMark[2])
             result_list.extend(token_list)
-            #print token_list
-            #
-            #print "--------------------------"
+            print token_list
+            
+            print "--------------------------"
+            
         return result_list
             
     def scanLine(self, line):
@@ -135,4 +136,4 @@ if __name__ == '__main__':
     scanner = Scanner()
     scanner.loadTree('../data/wikitree2.xml')
     scanner.loadFile('../data/testfile')
-    print scanner.scan()
+    scanner.scan()
