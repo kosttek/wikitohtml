@@ -6,4 +6,10 @@
 		<endTag>'''</endTag>
 		<requiredParentTag></requiredParentTag>
 	</token>
+	<token>
+		<id>italics</id>
+		<startTag>''</startTag>
+		<endTag>''</endTag>
+		<requiredParentTag></requiredParentTag>
+	</token>
 </parserTree>
