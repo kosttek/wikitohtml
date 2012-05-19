@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<token>
+	<id>bold</id>
+	<content>
+		<text>Text to be bolded</text>
+	</content>
+</token>

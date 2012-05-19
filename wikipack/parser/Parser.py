@@ -6,6 +6,7 @@ class Parser(object):
     outputFolder = None
     tokenList = None
     
+    
     def loadTokenList(self, listWithTokens):
         self.tokenList = listWithTokens
         
@@ -17,7 +18,6 @@ class Parser(object):
         
     def parse(self):
         clearedList = ListManager.ListManager.clearListFromEmptyTokens(self.tokenList)
-        print clearedList
         
 
 if __name__ == '__main__':
