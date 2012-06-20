@@ -21,8 +21,32 @@ class TestScanner(unittest.TestCase):
         self.assertEqual(len(ret), 9, "dlugosc listy")
          
     def testScanLineDoubleSign(self):
-        ret = self.scanner.scanLine("alasd [% asd %] asda \n");
+        ret = self.scanner.scanLine("alasd [%asd%] asda \n");
         self.assertEqual(len(ret), 5, "dlugosc listy")
+        
+        self.assertEqual(len(ret[0]), 6, "dlugosc elementu")
+        self.assertEqual(len(ret[1]), 2, "dlugosc elementu")
+        self.assertEqual(len(ret[2]), 3, "dlugosc elementu")
+        self.assertEqual(len(ret[3]), 2, "dlugosc elementu")
+        self.assertEqual(len(ret[4]), 7, "dlugosc elementu")
+        
+    def testScanLineDoubleSignCutingLetter(self):
+        ret = self.scanner.scanLine("a[xx]xx \n");
+        self.assertEqual(len(ret[0]), 1, "dlugosc elementu")
+        self.assertEqual(len(ret[1]), 1, "dlugosc elementu")
+        self.assertEqual(len(ret[2]), 2, "dlugosc elementu")
+        self.assertEqual(len(ret[3]), 1, "dlugosc elementu")
+        self.assertEqual(len(ret[4]), 4, "dlugosc elementu")
+    
+    def testScanLineSingleNoEmptySigns(self):
+        ret = self.scanner.scanLine("numer *_~] dwa \n");
+        self.assertEqual(len(ret), 6, "dlugosc listy")
+        self.assertEqual(ret[0], "numer ", "wartosc elementu")
+        self.assertEqual(ret[1], "*", "wartosc elementu")
+        self.assertEqual(ret[2], "_", "wartosc elementu")
+        self.assertEqual(ret[3], "~", "wartosc elementu")
+        self.assertEqual(ret[4], "]", "wartosc elementu")
+    
     
     def testScanFirstMarkNoMarks(self):
         ret = self.scanner.checkLineStartEndMarks("1234 67\n");

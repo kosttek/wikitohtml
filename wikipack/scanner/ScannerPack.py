@@ -44,7 +44,8 @@ class Scanner:
         
         def setEndMark(vo):
             #print "return - >",vo.retMark
-            ret.append(vo.tempString)
+            if vo.tempString != "":
+                ret.append(vo.tempString)
             vo.tempString = ""
             ret.append(vo.markAcumulator) # ret.append(vo.retMark)
             vo.markAcumulator = ""
@@ -52,7 +53,7 @@ class Scanner:
             vo.retMark = 0
             vo.added = 1
             
-        class varObject:
+        class VarObject:
             #TODO sprobowac z find
             treeElement = self.tree.getroot().iter("chars").next() 
             root = treeElement
@@ -62,7 +63,7 @@ class Scanner:
             markAcumulator = ""
             
         ret = list()
-        vo = varObject()
+        vo = VarObject()
         
         for character in line:
             
@@ -78,6 +79,7 @@ class Scanner:
                     break
                 elif vo.retMark != 0:
                     setEndMark(vo)
+                    vo.tempString += character
                     break
                 else:
                     vo.tempString += vo.markAcumulator
@@ -89,6 +91,7 @@ class Scanner:
                 vo.added=0
             elif vo.treeElement == vo.root:
                 vo.tempString +=  character +vo.markAcumulator
+            
                      
         ret.append(vo.tempString)
         
@@ -136,4 +139,4 @@ if __name__ == '__main__':
     scanner.loadTree('../data/wikitree2.xml')
     scanner.loadFile('../data/testfile')
     print scanner.scan()
-    print scanner.scanLine("asd *a_~]a[sd\n");
+    print scanner.scanLine("asd c*a_~]a[sd");
