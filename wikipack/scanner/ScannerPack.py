@@ -27,16 +27,16 @@ class Scanner:
         result_list = list();
         for line in self.file.readlines() : 
             lineMark = self.checkLineStartEndMarks(line)
-            print lineMark[0]
             token_list = self.scanLine(lineMark[0] )
             token_list.append(lineMark[1])
             token_list.append("\n")
             token_list.insert(0,lineMark[1])
             token_list.insert(0,lineMark[2])
             result_list.extend(token_list)
-            #print token_list
-            #
-            #print "--------------------------"
+
+            
+
+            
         return result_list
             
     def scanLine(self, line):
@@ -138,5 +138,5 @@ if __name__ == '__main__':
     scanner = Scanner()
     scanner.loadTree('../data/wikitree2.xml')
     scanner.loadFile('../data/testfile')
-    print scanner.scan()
-    print scanner.scanLine("asd c*a_~]a[sd");
+    result = scanner.scan()
+    print result
