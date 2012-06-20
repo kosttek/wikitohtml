@@ -27,6 +27,7 @@ class Scanner:
         result_list = list();
         for line in self.file.readlines() : 
             lineMark = self.checkLineStartEndMarks(line)
+            print lineMark[0]
             token_list = self.scanLine(lineMark[0] )
             token_list.append(lineMark[1])
             token_list.append("\n")
@@ -106,7 +107,7 @@ class Scanner:
         if line[-1]=='\n':
             endcount = -1
         else:
-            endcount =  0
+            endcount =  len(line)
         
         if len(line) > 2:
             treeElement = self.tree.getroot()
@@ -130,9 +131,9 @@ class Scanner:
     
     
     
-    
 if __name__ == '__main__':
     scanner = Scanner()
     scanner.loadTree('../data/wikitree2.xml')
     scanner.loadFile('../data/testfile')
     print scanner.scan()
+    print scanner.scanLine("asd *a_~]a[sd\n");
