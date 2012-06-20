@@ -6,7 +6,7 @@ Created on 19-05-2012
 import unittest
 from wikipack.parser.ParserTreeHelper import ParserTreeHelper
 
-class Test(unittest.TestCase):
+class ParserTreeHelperTests(unittest.TestCase):
 
     def setUp(self):
         self.pth = ParserTreeHelper()
@@ -25,7 +25,24 @@ class Test(unittest.TestCase):
         emptyTokenTag = ""
         
         self.assertFalse(self.pth.isTokenATag(emptyTokenTag), 'Tag is empty and should NOT be marked as Tag Token')
+        
+    def testGettingEndingTagWithEmptyToken(self):
+        emptyTokenTag = ""
+        
+        self.assertEqual(self.pth.getEndingTag(emptyTokenTag), None, 'Result is not None')
+    
+    def testGettingEndingTagWithValidToken(self):
+        validSimpleTag = "'''"
+        
+        self.assertEqual(self.pth.getEndingTag(validSimpleTag), "'''", 'Returned token is not valid')
 
+    def testGettingEndingTagWithInvalidToken(self):
+        invalidTag = "blabla"
+        
+        self.assertEqual(self.pth.getEndingTag(invalidTag), None, 'Invalid token did not return none')
+        
 if __name__ == "__main__":
+    
+    
     #import sys;sys.argv = ['', 'Test.testValidTag']
     unittest.main()

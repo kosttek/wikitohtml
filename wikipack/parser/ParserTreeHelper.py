@@ -24,8 +24,14 @@ class ParserTreeHelper(object):
         return False;
     
     def getEndingTag(self, tokenSymbol):
-        return None
-    
+        if not self.isTokenATag(tokenSymbol):
+            return None
+        tokenList = self.__tokenTree.findall('token')
+        for token in tokenList:
+            startTag = token.find('startTag').text
+            endingTag = token.find('startTag').text
+            if tokenSymbol == startTag:
+                return endingTag if (endingTag != "") else None
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
