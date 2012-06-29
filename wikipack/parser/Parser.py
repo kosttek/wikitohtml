@@ -1,4 +1,7 @@
 import ListManager
+from xml.etree.ElementTree import ElementTree
+from xml.etree.ElementTree import Element
+
 
 class Parser(object):
     
@@ -18,6 +21,14 @@ class Parser(object):
         
     def parse(self):
         clearedList = ListManager.ListManager.clearListFromEmptyTokens(self.tokenList)
+        #tworzymy head
+        mainTree  = ElementTree()
+        mainElement = Element()
+        lm = ListManager.ListManager()
+        lm.loadList(clearedList)
+        element = lm.parseListToElement()
+        mainElement.append(element)
+        
         
 
 if __name__ == '__main__':

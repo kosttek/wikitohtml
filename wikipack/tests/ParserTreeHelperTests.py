@@ -8,8 +8,12 @@ from wikipack.parser.ParserTreeHelper import ParserTreeHelper
 
 class ParserTreeHelperTests(unittest.TestCase):
 
+    emptyTokenTag = ""
+
     def setUp(self):
         self.pth = ParserTreeHelper()
+
+    #tag Valdetion
 
     def testValidTag(self):
         validTokenTag = "'''"
@@ -22,14 +26,15 @@ class ParserTreeHelperTests(unittest.TestCase):
         self.assertFalse(self.pth.isTokenATag(invalidTokenTag), 'Tag is invalid and should NOT be marked as Tag Token')
     
     def testEmptyTag(self):
-        emptyTokenTag = ""
         
-        self.assertFalse(self.pth.isTokenATag(emptyTokenTag), 'Tag is empty and should NOT be marked as Tag Token')
+        self.assertFalse(self.pth.isTokenATag(self.emptyTokenTag), 'Tag is empty and should NOT be marked as Tag Token')
+        
+        
+    #getEndingTag method    
         
     def testGettingEndingTagWithEmptyToken(self):
-        emptyTokenTag = ""
-        
-        self.assertEqual(self.pth.getEndingTag(emptyTokenTag), None, 'Result is not None')
+
+        self.assertEqual(self.pth.getEndingTag(self.emptyTokenTag), None, 'Result is not None')
     
     def testGettingEndingTagWithValidToken(self):
         validSimpleTag = "'''"
@@ -40,6 +45,30 @@ class ParserTreeHelperTests(unittest.TestCase):
         invalidTag = "blabla"
         
         self.assertEqual(self.pth.getEndingTag(invalidTag), None, 'Invalid token did not return none')
+        
+    #getTagId method
+    
+    def testGettingTagIdWithEmptyToken(self):
+        emptyTokenTag = ""
+        returnedValue = self.pth.getTagId(emptyTokenTag)
+        expectedValue = None
+        
+        self.assertEqual(returnedValue, expectedValue, 'Empty token did not return None')
+        
+    def testGettingTagIdWithValidToken(self):
+        validTokenTag = "'''"
+        returnedValue = self.pth.getTagId(validTokenTag)
+        expectedValue = 'bold'
+        
+        self.assertEqual(returnedValue, expectedValue, 'Valid token returned wrong value')
+            
+    def testGettingTagIdWithInvalidToken(self):
+        
+        invalidTokenTag = "i'n'v"
+        returnedValue = self.pth.getTagId(invalidTokenTag)
+        expectedValue = None
+        
+        self.assertEqual(returnedValue, expectedValue, 'Empty token did not return None')
         
 if __name__ == "__main__":
     
