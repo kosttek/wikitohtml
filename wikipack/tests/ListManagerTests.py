@@ -50,6 +50,16 @@ class Test(unittest.TestCase):
         expectedValue = 1
         
         self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 1')
+    
+    def testFindingIndexOfEndingTagWithTagInsideList(self):
+        list = ["a", "b", "'''","c","d"]
+        self._lm.loadList(list)
+        validToken = "'''"
+        
+        returnedValue = self._lm.findIndexOfEndingTag(validToken)
+        expectedValue = 0
+        
+        self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 0')
         
     def testFindingIndexOfEndingTagWithSimpleLongList(self):
         list = ["'''", "b", "c","'''", "d"]
@@ -72,6 +82,25 @@ class Test(unittest.TestCase):
         print "returnedValue:" + str(returnedValue)
         
         self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 5')
+    
+    
+    #ListCutting tests
+    
+    def testListCuttingFromBeginning(self):
+        listToCut = ["a", "b", "c","d","e","f"]
+        self._lm.loadList(listToCut)
+        
+        returnedList = self._lm.cutList(0, 3)
+        expectedLength = 2
+        self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
+        
+    def testListCuttingFromMiddle(self):
+        listToCut = ["a", "b", "c","d","e","f","g"]
+        self._lm.loadList(listToCut)
+        
+        returnedList = self._lm.cutList(2, 6)
+        expectedLength = 3
+        self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
