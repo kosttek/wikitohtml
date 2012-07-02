@@ -12,4 +12,10 @@
 		<endTag>''</endTag>
 		<requiredParentTag></requiredParentTag>
 	</token>
+	<token>
+		<id>boldanditalics</id>
+		<startTag>'''''</startTag>
+		<endTag>'''''</endTag>
+		<requiredParentTag></requiredParentTag>
+	</token>
 </parserTree>

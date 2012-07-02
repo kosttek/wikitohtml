@@ -35,6 +35,7 @@ class Parser(object):
         element = lm.parseListToElement()
         mainElement.append(element)
         
+        
         f = open('file.xml', 'w')
         prettyXmlString = minidom.parseString(tostring(mainElement)).toprettyxml()
         f.write(prettyXmlString)
