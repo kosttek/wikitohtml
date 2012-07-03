@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<parserTreeHead>
+
+		<token name="bold">
+
+				<token name="text">a</token>
+				<token name="text">1</token>
+				<token name="text">'''</token>
+				<token name="text">b</token>
+
+		</token>
+		<token name="text">a</token>
+		<token name="text">1</token>
+		<token name="bold">
+
+				<token name="text">b</token>
+
+		</token>
+		<token name="text">b</token>
+		<token name="bold">
+
+		</token>
+		<token name="text">c</token>
+
+</parserTreeHead>
