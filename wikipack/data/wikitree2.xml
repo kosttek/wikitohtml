@@ -19,6 +19,7 @@
   <char value="*" return = "1"/>
   <char value="_" return = "1"/>
   <char value="~" return = "1"/>
+  <char value="]" return ="1"/>
   <char value="%" return = "1">
   	<char value="]" return ="1"/>
   </char>
