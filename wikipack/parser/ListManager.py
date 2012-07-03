@@ -77,8 +77,9 @@ class ListManager(object):
                     tmpListManger.loadList(trimmedList)
                     returnedElement = tmpListManger.parseListToElement()
                     newElement.append(returnedElement)
-                    i = endingTagIndex
-            
+                    
+                    i = endingTagIndex+1
+                    
             headElement.append(newElement)
             
         return headElement
