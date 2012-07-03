@@ -33,11 +33,6 @@ class ListManager(object):
         if token == endingTag:
             skipFirstOccurenceOfTag = True
         
-        if self.__debug:
-            print "endingtag: " + endingTag
-            print "expected index: " + str(expectedIndexOfEndingTag)
-            print "same Tag Count: " + str(sameTagCount)
-            
         for idx, currentTokenElement in enumerate(self.__list):
             None
             if currentTokenElement == token:
@@ -48,7 +43,9 @@ class ListManager(object):
                     sameTagCount += 1 
             if currentTokenElement == endingTag:
                 expectedIndexOfEndingTag = idx
-                sameTagCount -= 1 
+                sameTagCount -= 1
+                
+                     
          
             if sameTagCount < 0:
                 break
@@ -80,6 +77,7 @@ class ListManager(object):
                     tmpListManger.loadList(trimmedList)
                     returnedElement = tmpListManger.parseListToElement()
                     newElement.append(returnedElement)
+                    i = endingTagIndex
             
             headElement.append(newElement)
             
