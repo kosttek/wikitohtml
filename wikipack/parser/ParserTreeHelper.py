@@ -14,7 +14,7 @@ class ParserTreeHelper(object):
 
     def __init__(self):
         self.__tokenTree = ElementTree()
-        self.__tokenTree.parse(os.path.dirname(__file__) + '\\' + self.__xmlTreePath)
+        self.__tokenTree.parse(os.path.dirname(__file__) + '/' + self.__xmlTreePath)
         
     def isTokenATag(self, tokenSymbol):
         tokenList = self.__tokenTree.findall('token')
