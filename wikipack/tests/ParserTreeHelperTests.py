@@ -63,12 +63,25 @@ class ParserTreeHelperTests(unittest.TestCase):
         self.assertEqual(returnedValue, expectedValue, 'Valid token returned wrong value')
             
     def testGettingTagIdWithInvalidToken(self):
-        
         invalidTokenTag = "i'n'v"
         returnedValue = self.pth.getTagId(invalidTokenTag)
         expectedValue = None
         
         self.assertEqual(returnedValue, expectedValue, 'Empty token did not return None')
+        
+    def testAffectingLineWithInvalidToken(self):
+        invalidToken = "a"
+        returnedValue = self.pth.affectsLine(invalidToken)
+        expectedValue = False
+        
+        self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return None')
+        
+    def testAffectingLineWithValidToken(self):
+        validToken = ";"
+        returnedValue = self.pth.affectsLine(validToken)
+        expectedValue = True
+        
+        self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return True')
         
 if __name__ == "__main__":
     
