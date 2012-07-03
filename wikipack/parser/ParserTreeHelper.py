@@ -14,7 +14,7 @@ class ParserTreeHelper(object):
 
     def __init__(self):
         self.__tokenTree = ElementTree()
-        self.__tokenTree.parse(os.path.dirname(__file__) + '\\' + self.__xmlTreePath)
+        self.__tokenTree.parse(os.path.dirname(__file__) + '/' + self.__xmlTreePath)
         
     def isTokenATag(self, tokenSymbol):
         tokenList = self.__tokenTree.findall('token')
@@ -46,18 +46,6 @@ class ParserTreeHelper(object):
             if tokenSymbol == startTag:
                 return name 
         return None
-    
-    def affectsLine(self, tokenSymbol):
-        if not self.isTokenATag(tokenSymbol):
-            return False
-        tokenList = self.__tokenTree.findall('token')
-        for token in tokenList:
-            startTag = token.find('startTag').text
-            if startTag == tokenSymbol:
-                if token.find('affects').text == "line":
-                    return True
-                return False
-        return False
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
