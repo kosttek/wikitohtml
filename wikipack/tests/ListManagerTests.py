@@ -79,13 +79,42 @@ class Test(unittest.TestCase):
         returnedValue = self._lm.findIndexOfEndingTag(validToken)
         expectedValue = 5
         
-        print "returnedValue:" + str(returnedValue)
+        #print "returnedValue:" + str(returnedValue)
         
         self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 5')
     
     
     #ListCutting tests
     
+    def testFindingIndexOfEndingTagWithSemicolonAtBeginningWithoutNewLine(self):
+        testList = [";", "a", "b", "c"]
+        self._lm.loadList(testList)
+        token = ";"
+        returnedValue = self._lm.findIndexOfEndingTag(token)
+        expectedValue = 3
+        
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 3')
+        
+    def testFindingIndexOfEndingTagWithSemicolonAtBeginningWitNewLine(self):
+        testList = [";", "a", "b", "c","\n", "d", "e"]
+        self._lm.loadList(testList)
+        token = ";"
+        returnedValue = self._lm.findIndexOfEndingTag(token)
+        expectedValue = 3
+        
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 3')
+        
+    def testFindingIndexOfEndingTagWithSemicolonInMiddle(self):
+        testList = ["1", ";", "a", "b", "c"]
+        self._lm.loadList(testList)
+        token = ";"
+        returnedValue = self._lm.findIndexOfEndingTag(token)
+        expectedValue = 0
+        
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 0')
+        
+        
+
     def testListCuttingFromBeginning(self):
         listToCut = ["a", "b", "c","d","e","f"]
         self._lm.loadList(listToCut)

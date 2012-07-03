@@ -18,4 +18,10 @@
 		<endTag>'''''</endTag>
 		<requiredParentTag></requiredParentTag>
 	</token>
+	<token>
+		<id>boldline</id>
+		<startTag>;</startTag>
+		<endTag>\n</endTag>
+		<affects>line</affects>
+	</token>
 </parserTree>
