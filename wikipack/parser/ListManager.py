@@ -55,8 +55,13 @@ class ListManager(object):
     #todo test
     def parseListToElement(self):
         headElement = Element("headElement")
+        skip = None
 
         for i, currentToken in enumerate(self.__list):
+            
+            if i < skip:
+                continue
+            
             newElement = Element("token")  
             if not self.__pth.isTokenATag(currentToken):
                 newElement.set('name', 'text')
@@ -78,7 +83,7 @@ class ListManager(object):
                     returnedElement = tmpListManger.parseListToElement()
                     newElement.append(returnedElement)
                     
-                    i = endingTagIndex+1
+                    skip = endingTagIndex
                     
             headElement.append(newElement)
             
