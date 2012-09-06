@@ -24,16 +24,15 @@ class ParserTreeHelper(object):
         return False;
     
     def getEndingTag(self, tokenSymbol):
-        if not self.isTokenATag(tokenSymbol):
-            return None
-        tokenList = self.__tokenTree.findall('token')
-        for token in tokenList:
-            startTag = token.find('startTag').text
-            endingTag = token.find('startTag').text
-            if tokenSymbol == startTag:
-                return endingTag if (endingTag != "") else None
-        return None
-    
+        tag = self.getTag(tokenSymbol)
+        if tag:
+            endingTag = tag.find('endTag').text
+            if endingTag == '\\n':
+                endingTag = '\n'
+            if (endingTag != ""): 
+                return endingTag
+            else:
+                return None
     
     #todo test
     def getTagId(self, tokenSymbol):
@@ -48,18 +47,28 @@ class ParserTreeHelper(object):
         return None
     
     def affectsLine(self, tokenSymbol):
-        if not self.isTokenATag(tokenSymbol):
-            return False
-        tokenList = self.__tokenTree.findall('token')
-        for token in tokenList:
-            startTag = token.find('startTag').text
-            if startTag == tokenSymbol:
-                if token.find('affects').text == "line":
+        tag = self.getTag(tokenSymbol)
+        if tag:
+            try:
+                if tag.find('affects').text == "line":
                     return True
+            except:
                 return False
         return False
     
-        
+    def hasSpecialRequirements(self, tokenSymbol):
+        tag = self.getToken(tokenSymbol)
+    
+    def getTag(self, tokenSymbol):
+        if not self.isTokenATag(tokenSymbol):
+            return None
+        tokenList = self.__tokenTree.findall('token')
+        for token in tokenList:
+            startTag = token.find('startTag').text
+            if tokenSymbol == startTag:
+                return token
+        return None
+    
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
    parser = ParserTreeHelper()
