@@ -1,6 +1,8 @@
 from wikipack.parser.ParserTreeHelper import ParserTreeHelper
 from xml.etree.ElementTree import Element
 
+class NotATagException(BaseException):
+    pass
 
 class ListManager(object):
     
@@ -25,31 +27,33 @@ class ListManager(object):
     #TODO test    
     def findIndexOfEndingTag(self, token):
         if not self.__pth.isTokenATag(token):
-            return 0
+            raise NotATagException
+        specialRequirement = self.__pth.getSpecialRequirements(token) 
         endingTag = self.__pth.getEndingTag(token)
         expectedIndexOfEndingTag = 0
-        sameTagCount = 0
         skipFirstOccurenceOfTag = False
         if token == endingTag:
             skipFirstOccurenceOfTag = True
-        
+        counter = 0
+        start_token_found = False
         for idx, currentTokenElement in enumerate(self.__list):
-            None
+            counter = idx
+            
             if currentTokenElement == token:
+                start_token_found = True
+                if specialRequirement == 'FirstInLine':
+                    if idx != 0:
+                        if self.__list[idx-1] != '\n':
+                            raise NotATagException
+            if (currentTokenElement == endingTag) and start_token_found:
                 if skipFirstOccurenceOfTag:
                     skipFirstOccurenceOfTag = False
                     continue
                 else:
-                    sameTagCount += 1 
-            if currentTokenElement == endingTag:
-                expectedIndexOfEndingTag = idx
-                sameTagCount -= 1
-                
-                     
-         
-            if sameTagCount < 0:
-                break
-            
+                    expectedIndexOfEndingTag = idx
+                    break
+        if self.__pth.affectsLine(token):
+            return counter
         return expectedIndexOfEndingTag
     
     #todo test
@@ -68,9 +72,9 @@ class ListManager(object):
                 newElement.text = currentToken
             
             else:
-                endingTagIndex = self.findIndexOfEndingTag(currentToken)
-            
-                if endingTagIndex == 0:
+                try:
+                    endingTagIndex = self.findIndexOfEndingTag(currentToken)
+                except NotATagException:
                     newElement.set('name', 'text')
                     newElement.text = currentToken
                 else:

@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<parserTreeHead>
+	<headElement>
+		<token name="bold">
+			<headElement>
+				<token name="text">
+					a
+				</token>
+				<token name="text">
+					1
+				</token>
+			</headElement>
+		</token>
+		<token name="bold">
+			<headElement/>
+		</token>
+		<token name="text">
+			b
+		</token>
+		<token name="bold">
+			<headElement/>
+		</token>
+		<token name="text">
+			c
+		</token>
+		<token name="text">
+			;
+		</token>
+		<token name="text">
+			a
+		</token>
+		<token name="text">
+			b
+		</token>
+		<token name="text">
+			
+
+		</token>
+		<token name="text">
+			;
+		</token>
+		<token name="text">
+			c
+		</token>
+		<token name="text">
+			d
+		</token>
+		<token name="text">
+			e
+		</token>
+		<token name="text">
+			f
+		</token>
+	</headElement>
+</parserTreeHead>

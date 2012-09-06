@@ -56,8 +56,14 @@ class ParserTreeHelper(object):
                 return False
         return False
     
-    def hasSpecialRequirements(self, tokenSymbol):
-        tag = self.getToken(tokenSymbol)
+    def getSpecialRequirements(self, tokenSymbol):
+        tag = self.getTag(tokenSymbol)
+        if tag:
+            try:
+                return tag.find('specialRequirement').text
+            except:
+                None
+        return None
     
     def getTag(self, tokenSymbol):
         if not self.isTokenATag(tokenSymbol):

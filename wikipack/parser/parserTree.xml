@@ -23,5 +23,11 @@
 		<startTag>;</startTag>
 		<endTag>\n</endTag>
 		<affects>line</affects>
+		<specialRequirement>FirstInLine</specialRequirement>
+	</token>
+	<token>
+		<id>link</id>
+		<startTag>[[</startTag>
+		<endTag>]]</endTag>
 	</token>
 </parserTree>

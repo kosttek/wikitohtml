@@ -1,0 +1,1 @@
+<window><title font="large">A sample text window</title><text wrap="word" /><buttonbox><button>OK</button><button>Cancel</button></buttonbox></window>

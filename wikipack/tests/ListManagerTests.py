@@ -5,6 +5,7 @@ Created on 25-06-2012
 '''
 import unittest
 from wikipack.parser import ListManager
+from wikipack.parser.ListManager import NotATagException
 
 
 class Test(unittest.TestCase):
@@ -16,10 +17,7 @@ class Test(unittest.TestCase):
         emptyList = []
         self._lm.loadList(emptyList)
         
-        returnedValue = self._lm.findIndexOfEndingTag('')
-        expectedValue = 0
-        
-        self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 0')
+        self.assertRaises(NotATagException, self._lm.findIndexOfEndingTag, '')
         
     def testFindingIndexOfEndingTagWithEmptyListAndValidToken(self):
         emptyList = []
@@ -36,10 +34,7 @@ class Test(unittest.TestCase):
         self._lm.loadList(list)
         InvalidToken = "a'b'"
         
-        returnedValue = self._lm.findIndexOfEndingTag(InvalidToken)
-        expectedValue = 0
-        
-        self.assertEqual(returnedValue, expectedValue, 'Invalid token returned not 0')
+        self.assertRaises(NotATagException, self._lm.findIndexOfEndingTag, InvalidToken)
     
     def testFindingIndexOfEndingTagWithSimpleShortList(self):
         list = ["'''","'''"]
@@ -77,11 +72,11 @@ class Test(unittest.TestCase):
         validToken = "'''"
         
         returnedValue = self._lm.findIndexOfEndingTag(validToken)
-        expectedValue = 5
+        expectedValue = 3
         
         #print "returnedValue:" + str(returnedValue)
         
-        self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 5')
+        self.assertEqual(returnedValue, expectedValue, 'Empty list  and empty token returned not 3')
     
     
     #ListCutting tests
@@ -93,43 +88,59 @@ class Test(unittest.TestCase):
         returnedValue = self._lm.findIndexOfEndingTag(token)
         expectedValue = 3
         
-        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 3')
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned '+str(returnedValue)+', not '+str(expectedValue))
         
     def testFindingIndexOfEndingTagWithSemicolonAtBeginningWitNewLine(self):
         testList = [";", "a", "b", "c","\n", "d", "e"]
         self._lm.loadList(testList)
         token = ";"
         returnedValue = self._lm.findIndexOfEndingTag(token)
-        expectedValue = 3
+        expectedValue = 4
         
-        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 3')
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned '+str(returnedValue)+' not '+str(expectedValue))
         
     def testFindingIndexOfEndingTagWithSemicolonInMiddle(self):
         testList = ["1", ";", "a", "b", "c"]
         self._lm.loadList(testList)
         token = ";"
-        returnedValue = self._lm.findIndexOfEndingTag(token)
-        expectedValue = 0
         
-        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned not 0')
+        self.assertRaises(NotATagException, self._lm.findIndexOfEndingTag,token)
+    
         
-        
-
     def testListCuttingFromBeginning(self):
-        listToCut = ["a", "b", "c","d","e","f"]
-        self._lm.loadList(listToCut)
-        
-        returnedList = self._lm.cutList(0, 3)
-        expectedLength = 2
-        self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
-        
+            listToCut = ["a", "b", "c","d","e","f"]
+            self._lm.loadList(listToCut)
+            
+            returnedList = self._lm.cutList(0, 3)
+            expectedLength = 2
+            self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
+            
     def testListCuttingFromMiddle(self):
-        listToCut = ["a", "b", "c","d","e","f","g"]
-        self._lm.loadList(listToCut)
+            listToCut = ["a", "b", "c","d","e","f","g"]
+            self._lm.loadList(listToCut)
+            
+            returnedList = self._lm.cutList(2, 6)
+            expectedLength = 3
+            self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
+                
+    def testFindingIndexOfEndingTagInLink(self):
+        testList = ["a","[[", "c", "'", "]]", "]]"]
+        self._lm.loadList(testList)
+        token = "[["
+        expectedValue = 4
         
-        returnedList = self._lm.cutList(2, 6)
-        expectedLength = 3
-        self.assertEqual(len(returnedList), expectedLength, 'List has wrong length')
+        returnedValue = self._lm.findIndexOfEndingTag(token)
+        self.assertEqual(returnedValue, expectedValue, 'Link: wrong number of ending tag. Expected '+str(expectedValue)+', got ' +str(returnedValue))
+    
+
+    def testFindingIndexOfEndingTagWithValidSemicolonInMiddle(self):
+        testList = ["1",'b', '\n' ';', "a", 'b', '\n',"c"]
+        self._lm.loadList(testList)
+        token = ";"
+        returnedValue = self._lm.findIndexOfEndingTag(token)
+        expectedValue = 6
+        
+        self.assertEqual(returnedValue, expectedValue, 'Semiconon at beginning without new line returned '+str(returnedValue)+' not '+str(expectedValue))
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

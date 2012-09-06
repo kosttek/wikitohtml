@@ -45,8 +45,6 @@ if __name__ == '__main__':
     parser = Parser()
 #    tList = ["", "a", "b", "","c","","q","abcde","tekst", "w"]
 #    tList = ["", "a", "b", "","c","","'''","abcde","tekst", "'''"]
-    tList = ["'''", "a", "1", "'''", "b", "'''", "c"]
+    tList = ["'''", "a", "1", "'''", "b", "'''", "c", ';', 'a', 'b', '\n', ';', 'c', 'd', 'e', 'f']
     parser.loadTokenList(tList)
     parser.parse()
-    
- 
