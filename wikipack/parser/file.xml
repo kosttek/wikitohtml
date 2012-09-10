@@ -51,5 +51,21 @@
 		<token name="text">
 			f
 		</token>
+		<token name="link">
+			<headElement>
+				<token name="text">
+					abcd
+				</token>
+				<token name="text">
+					cde
+				</token>
+			</headElement>
+		</token>
+		<token name="text">
+			]]
+		</token>
+		<token name="text">
+			xyz
+		</token>
 	</headElement>
 </parserTreeHead>

@@ -36,7 +36,7 @@ class Scanner:
 
             
 
-            
+        self.file.close()
         return result_list
             
     def scanLine(self, line):

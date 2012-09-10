@@ -2,32 +2,70 @@
 <parserTree>
 	<token>
 		<id>bold</id>
-		<startTag>'''</startTag>
-		<endTag>'''</endTag>
+		<startTag>*</startTag>
+		<endTag>*</endTag>
 		<requiredParentTag></requiredParentTag>
+		<HTMLTag>b</HTMLTag>
 	</token>
 	<token>
 		<id>italics</id>
-		<startTag>''</startTag>
-		<endTag>''</endTag>
+		<startTag>_</startTag>
+		<endTag>_</endTag>
 		<requiredParentTag></requiredParentTag>
+		<HTMLTag>i</HTMLTag>
 	</token>
 	<token>
-		<id>boldanditalics</id>
-		<startTag>'''''</startTag>
-		<endTag>'''''</endTag>
-		<requiredParentTag></requiredParentTag>
+		<id>code</id>
+		<startTag>`</startTag>
+		<endTag>`</endTag>
+		<HTMLTag>code</HTMLTag>
 	</token>
 	<token>
-		<id>boldline</id>
-		<startTag>;</startTag>
-		<endTag>\n</endTag>
-		<affects>line</affects>
-		<specialRequirement>FirstInLine</specialRequirement>
+		<id>code</id>
+		<startTag>{{{</startTag>
+		<endTag>}}}</endTag>
+		<HTMLTag>code</HTMLTag>
 	</token>
 	<token>
-		<id>link</id>
-		<startTag>[[</startTag>
-		<endTag>]]</endTag>
+		<id>strikeout</id>
+		<startTag>~~</startTag>
+		<endTag>~~</endTag>
+		<HTMLTag>strike</HTMLTag>
+	</token>
+	<token>
+		<id>heading</id>
+		<startTag>=</startTag>
+		<endTag>=</endTag>
+		<HTMLTag>h1</HTMLTag>
+	</token>
+	<token>
+		<id>subheading</id>
+		<startTag>==</startTag>
+		<endTag>==</endTag>
+		<HTMLTag>h2</HTMLTag>
+	</token>
+	<token>
+		<id>headingl3</id>
+		<startTag>===</startTag>
+		<endTag>===</endTag>
+		<HTMLTag>h3</HTMLTag>
+	</token>
+	<token>
+		<id>headingl4</id>
+		<startTag>====</startTag>
+		<endTag>====</endTag>
+		<HTMLTag>h4</HTMLTag>
+	</token>
+	<token>
+		<id>headingl5</id>
+		<startTag>=====</startTag>
+		<endTag>=====</endTag>
+		<HTMLTag>h5</HTMLTag>
+	</token>
+	<token>
+		<id>headingl6</id>
+		<startTag>======</startTag>
+		<endTag>======</endTag>
+		<HTMLTag>h6</HTMLTag>
 	</token>
 </parserTree>

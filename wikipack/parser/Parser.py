@@ -2,6 +2,7 @@ import ListManager
 from xml.etree.ElementTree import ElementTree
 from xml.etree.ElementTree import Element
 from xml.dom import minidom
+from wikipack.parser.wikiparser import wikify
 from xml.etree.ElementTree import tostring
 
 class Parser(object):
@@ -9,10 +10,12 @@ class Parser(object):
     outputFileName = None
     outputFolder = None
     tokenList = None
+    options = None
     
     
-    def loadTokenList(self, listWithTokens):
+    def loadTokenList(self, listWithTokens, opitons):
         self.tokenList = listWithTokens
+        self.options = opitons
         
     def setOutputFolder(self, _outpuDir):
         self.outputFolder = _outpuDir
@@ -34,17 +37,13 @@ class Parser(object):
 
         element = lm.parseListToElement()
         mainElement.append(element)
-        
-        
-        f = open('file.xml', 'w')
-        prettyXmlString = minidom.parseString(tostring(mainElement)).toprettyxml()
-        f.write(prettyXmlString)
+        wikify(None, self.options)
         
 #        ElementTree(mainElement).write('file.xml')
 if __name__ == '__main__':
     parser = Parser()
 #    tList = ["", "a", "b", "","c","","q","abcde","tekst", "w"]
 #    tList = ["", "a", "b", "","c","","'''","abcde","tekst", "'''"]
-    tList = ["'''", "a", "1", "'''", "b", "'''", "c", ';', 'a', 'b', '\n', ';', 'c', 'd', 'e', 'f']
+    tList = ["'''", "a", "1", "'''", "b", "'''", "c", ';', 'a', 'b', '\n', ';', 'c', 'd', 'e', 'f', '[[', 'abcd', 'cde', ']]', 'xyz']
     parser.loadTokenList(tList)
     parser.parse()

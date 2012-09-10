@@ -16,7 +16,7 @@ class ParserTreeHelperTests(unittest.TestCase):
     #tag Valdetion
 
     def testValidTag(self):
-        validTokenTag = "'''"
+        validTokenTag = "~~"
         
         self.assertTrue(self.pth.isTokenATag(validTokenTag), 'Tag should be marked as Tag Token')
     
@@ -37,9 +37,9 @@ class ParserTreeHelperTests(unittest.TestCase):
         self.assertEqual(self.pth.getEndingTag(self.emptyTokenTag), None, 'Result is not None')
     
     def testGettingEndingTagWithValidToken(self):
-        validSimpleTag = "'''"
+        validSimpleTag = "*"
         
-        self.assertEqual(self.pth.getEndingTag(validSimpleTag), "'''", 'Returned token is not valid')
+        self.assertEqual(self.pth.getEndingTag(validSimpleTag), "*", 'Returned token is not valid')
 
     def testGettingEndingTagWithInvalidToken(self):
         invalidTag = "blabla"
@@ -56,7 +56,7 @@ class ParserTreeHelperTests(unittest.TestCase):
         self.assertEqual(returnedValue, expectedValue, 'Empty token did not return None')
         
     def testGettingTagIdWithValidToken(self):
-        validTokenTag = "'''"
+        validTokenTag = "*"
         returnedValue = self.pth.getTagId(validTokenTag)
         expectedValue = 'bold'
         
@@ -76,16 +76,16 @@ class ParserTreeHelperTests(unittest.TestCase):
         
         self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return None')
         
-    def testAffectingLineWithValidToken(self):
-        validToken = ";"
-        returnedValue = self.pth.affectsLine(validToken)
-        expectedValue = True
-        
-        self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return True')
-    
-    def testAffectingLineWithTokenThatDoesntAffectLine(self):
-        validToken = "'''"
-        self.assertFalse(self.pth.affectsLine(validToken), 'Invalid affecting token did not return True')
+#    def testAffectingLineWithValidToken(self):
+#        validToken = ";"
+#        returnedValue = self.pth.affectsLine(validToken)
+#        expectedValue = True
+#        
+#        self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return True')
+#    
+#    def testAffectingLineWithTokenThatDoesntAffectLine(self):
+#        validToken = "'''"
+#        self.assertFalse(self.pth.affectsLine(validToken), 'Invalid affecting token did not return True')
         
 if __name__ == "__main__":
     
