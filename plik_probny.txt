@@ -1,0 +1,15 @@
+Witamy serdecznie. Dzisiaj zaprezentujemy dzialanie parsera wiki
+
+*Ten tekst zapewne bedzie pogrubiony*
+_Czasem warto sie pochylic_
+`To jest probka kodu`
+Projekt jest taki ^super^
+Ocena nie powinna byc ,,niska,,
+*Listujemy to co trzeba
+*Kolejny element listy
+#Rozliczmy sie
+`<strong>Czy ten tag mnie pogrubia?</strong>`
+[Podziel sie sznurkiem]
+~~jestem tutaj skreślony~~
+=Naglowek 1=
+==Naglowek 2==

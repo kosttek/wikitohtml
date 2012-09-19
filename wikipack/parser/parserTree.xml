@@ -35,12 +35,14 @@
 	<token>
 		<id>listelement</id>
 		<startTag>*</startTag>
+		<endTag></endTag>
 		<affects>line</affects>
 		<HTMLTag>ol</HTMLTag>
 	</token>
 	<token>
 		<id>numberedlistelement</id>
 		<startTag>#</startTag>
+		<endTag></endTag>
 		<affects>line</affects>
 		<HTMLTag>li</HTMLTag>
 	</token>
@@ -110,124 +112,43 @@
 		<endTag>======</endTag>
 		<HTMLTag>h6</HTMLTag>
 	</token>
-	<token>
 		<acceptedHTMLTag>a</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>b</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>br</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>blackquote</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>code</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>dd</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>div</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>dl</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>dt</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>em</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>font</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>h1</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>h2</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>h3</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>h4</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>h5</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>i</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>img</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>li</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>ol</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>p</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>pre</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>q</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>s</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>span</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>strike</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>strong</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>sub</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>sup</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>table</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>tbody</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>td</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>tfoot</acceptedHTMLTag>
-	</token>
-	<token>
-		<acceptedHTMLTag>th</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>thead</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>tr</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>tt</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>u</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>ul</acceptedHTMLTag>
-	</token>
-	<token>
 		<acceptedHTMLTag>var</acceptedHTMLTag>
-	</token>
 </parserTree>
