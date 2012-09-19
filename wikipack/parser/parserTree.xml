@@ -27,6 +27,12 @@
 		<HTMLTag>code</HTMLTag>
 	</token>
 	<token>
+		<id>link</id>
+		<startTag>[]</startTag>
+		<endTag></endTag>
+		<HTMLTag>a href</HTMLTag>
+	</token>
+	<token>
 		<id>strikeout</id>
 		<startTag>~~</startTag>
 		<endTag>~~</endTag>
