@@ -78,7 +78,7 @@ class ParserTreeHelperTests(unittest.TestCase):
         
 #    def testAffectingLineWithValidToken(self):
 #        validToken = ";"
-#        returnedValue = self.pth.affectsLine(validToken)
+#        rnedValue = self.pth.affectsLine(validToken)
 #        expectedValue = True
 #        
 #        self.assertEqual(returnedValue, expectedValue, 'Invalid affecting token did not return True')

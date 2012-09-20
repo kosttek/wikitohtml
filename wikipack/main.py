@@ -19,7 +19,7 @@ def parse(*args):
         scanner.loadTree('data/wikitree2.xml')
         scanner.loadFile('parser/source/wikiSource.wiki')
         scanResult = scanner.scan()
-#       print scanResult
+        print scanResult
 
         parser = Parser()
         parser.loadTokenList(scanResult, options)

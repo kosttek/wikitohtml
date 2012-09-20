@@ -78,4 +78,4 @@ class ParserTreeHelper(object):
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
    parser = ParserTreeHelper()
-   parser.isTokenATag("'''")
+   parser.isTokenATag("{{{")

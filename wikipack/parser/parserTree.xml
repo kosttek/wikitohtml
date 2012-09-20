@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parserTree>
+    <token>
+		<id>point</id>
+		<startTag>#</startTag>
+		<endTag></endTag>
+		<special></special>
+		<HTMLTag>ol</HTMLTag>
+	</token>
+
 	<token>
 		<id>bold</id>
 		<startTag>*</startTag>
