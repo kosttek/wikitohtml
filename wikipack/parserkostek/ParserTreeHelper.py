@@ -5,6 +5,7 @@ Created on 19-05-2012
 '''
 from xml.etree.ElementTree import ElementTree
 import os
+import imp
 
 class ParserTreeHelper(object):
     
@@ -14,7 +15,10 @@ class ParserTreeHelper(object):
 
     def __init__(self):
         self.__tokenTree = ElementTree()
-        self.__tokenTree.parse(os.path.dirname(__file__) + '/' + self.__xmlTreePath)
+        package_name = "wikipack"
+        file, pathname, description = imp.find_module(package_name)
+        print pathname+ '/parserkostek/' + self.__xmlTreePath
+        self.__tokenTree.parse(pathname+ '/parserkostek/' + self.__xmlTreePath)
         
     def isTokenATag(self, tokenSymbol):
         tokenList = self.__tokenTree.findall('token')
@@ -42,6 +46,15 @@ class ParserTreeHelper(object):
                 return endingTag
             else:
                 return None
+            
+    def getSpecTag(self, tokenSymbol):
+        tag = self.getTag(tokenSymbol)
+        if tag:
+            isSpecial = tag.find('special')
+            if (isSpecial != None): 
+                return isSpecial.text
+            else:
+                return ""
     
     #todo test
     def getTagId(self, tokenSymbol):
@@ -87,4 +100,4 @@ class ParserTreeHelper(object):
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
    parser = ParserTreeHelper()
-   print parser.isTokenATag('\n')
+   print parser.getSpecTag("\n")

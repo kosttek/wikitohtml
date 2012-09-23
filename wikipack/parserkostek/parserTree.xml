@@ -4,21 +4,27 @@
 		<id>point</id>
 		<startTag>#</startTag>
 		<endTag></endTag>
-		<special></special>
+		<special>point</special>
 		<HTMLTag>ol</HTMLTag>
 	</token>
-<!-- 	<token> -->
-<!-- 		<id>endLine</id> -->
-<!-- 		<startTag>&#10;</startTag> -->
-<!-- 		<endTag></endTag> -->
-<!-- 		<special></special> -->
-<!-- 		<HTMLTag>br</HTMLTag> -->
-<!-- 	</token> -->
 	<token>
-		<id>body</id>
+		<id>endLine</id>
+		<startTag>&#10;</startTag>
+		<endTag></endTag>
+		<special>break</special>
+		<HTMLTag>br</HTMLTag>
+	</token>
+	<token>
+		<id>start</id>
 		<startTag>*start</startTag>
 		<endTag></endTag>		
 		<HTMLTag>body</HTMLTag>
+	</token>
+	<token>
+		<id>container</id>
+		<startTag>*container</startTag>
+		<endTag></endTag>		
+		<HTMLTag>container</HTMLTag>
 	</token>
 	<token>
 		<id>bold</id>
@@ -66,26 +72,26 @@
 		<endTag>,,</endTag>
 		<HTMLTag>sub</HTMLTag>
 	</token>
-	<token>
-		<id>listelement</id>
-		<startTag>*</startTag>
-		<endTag></endTag>
-		<affects>line</affects>
-		<HTMLTag>ol</HTMLTag>
-	</token>
-	<token>
-		<id>numberedlistelement</id>
-		<startTag>#</startTag>
-		<endTag></endTag>
-		<affects>line</affects>
-		<HTMLTag>li</HTMLTag>
-	</token>
-	<token>
-		<id>escapeHTML</id>
-		<startTag>`</startTag>
-		<endTag>`</endTag>
-		<HTMLTag></HTMLTag>
-	</token>
+<!-- 	<token> -->
+<!-- 		<id>listelement</id> -->
+<!-- 		<startTag>*</startTag> -->
+<!-- 		<endTag></endTag> -->
+<!-- 		<affects>line</affects> -->
+<!-- 		<HTMLTag>ol</HTMLTag> -->
+<!-- 	</token> -->
+<!-- 	<token> -->
+<!-- 		<id>numberedlistelement</id> -->
+<!-- 		<startTag>#</startTag> -->
+<!-- 		<endTag></endTag> -->
+<!-- 		<affects>line</affects> -->
+<!-- 		<HTMLTag>li</HTMLTag> -->
+<!-- 	</token> -->
+<!-- 	<token> -->
+<!-- 		<id>escapeHTML</id> -->
+<!-- 		<startTag>`</startTag> -->
+<!-- 		<endTag>`</endTag> -->
+<!-- 		<HTMLTag></HTMLTag> -->
+<!-- 	</token> -->
 	<token>
 		<id>comment</id>
 		<startTag>wiki:comment</startTag>
@@ -100,8 +106,9 @@
 	</token>
 	<token>
 		<id>link</id>
-		<startTag>[</startTag>
-		<endTag>]</endTag>
+		<startTag>[[</startTag>
+		<endTag>]]</endTag>
+		<special>link</special>
 		<HTMLTag>a href</HTMLTag>
 	</token>
 	<token>

@@ -52,7 +52,6 @@ class Scanner:
             vo.treeElement = vo.root
             vo.retMark = 0
             vo.added = 1
-            
         class VarObject:
             #TODO sprobowac z find
             treeElement = self.tree.getroot().iter("chars").next() 
@@ -66,8 +65,8 @@ class Scanner:
         vo = VarObject()
         
         for character in line:
-            
-            for element in list(vo.treeElement):
+            elemetns_list = list(vo.treeElement)
+            for element in elemetns_list:
                 
                 if element.attrib["value"] == character:
                     vo.markAcumulator +=  character
@@ -81,11 +80,17 @@ class Scanner:
                     setEndMark(vo)
                     vo.tempString += character
                     break
+                elif vo.treeElement != vo.root:
+#                    print elemetns_list.index(element ), element.attrib, len(elemetns_list)
+                    if elemetns_list.index(element ) < len(elemetns_list)-1:
+                        pass
+                    else:
+                        vo.tempString += vo.markAcumulator
+                        vo.markAcumulator = ""
+                        vo.treeElement = vo.root
+                        vo.retMark = 0
                 else:
-                    vo.tempString += vo.markAcumulator
-                    vo.markAcumulator = ""
-                    vo.treeElement = vo.root
-                    vo.retMark = 0
+                    pass
             
             if vo.added == 1:
                 vo.added=0

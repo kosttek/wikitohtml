@@ -41,4 +41,5 @@ paragraph1.appendChild(paragraph2)
 print doc.toprettyxml(indent=" ")
 p = maincard.getElementsByTagName("*")[0]
 print p.childNodes[0]._get_nodeValue()
+print paragraph1
 #ptext._
